@@ -8,7 +8,7 @@
 
 ## About the Project
 
-<img src="https://github.com/Luchkiin/listd-to-do-list-app/blob/master/images/listd-project-overview.png" alt="Logo" width="1280" height="450">
+<img src="https://github.com/Luchkiin/listd-to-do-list-app/blob/master/images/listd-project-overview-img.png" alt="Logo" width="1280" height="450">
 
 Listd is a free Android application that serves as a to-do list that let's you save your daily tasks. Listd put emphasis on simplicity and ease of use. Whether you want a shopping list, grocery list or you just have lots of things to remember Listd is built for you.
 
