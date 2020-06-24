@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <a href="#">
-    <img src="https://github.com/Luchkiin/listd-to-do-list-app/blob/master/images/listd-app-icon.png" alt="Logo" width="150" height="150">
+    <img src="https://github.com/Luchkiin/listd_v2/blob/master/images/listd-logo.png" alt="Logo" width="150" height="150">
   </a>
   <h1 align="center">Listd</h1>
 </p>
