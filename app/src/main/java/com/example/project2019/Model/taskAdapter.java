@@ -22,19 +22,13 @@ public class taskAdapter extends ArrayAdapter<Task> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Task tasks = getItem(position);
-
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.task_item, parent, false);
         }
-
         TextView taskTitle = convertView.findViewById(R.id.taskTitleTxt);
-        TextView taskDate = convertView.findViewById(R.id.taskDateTxt);
         TextView taskStatus = convertView.findViewById(R.id.taskStatusTxt);
-
         taskTitle.setText(tasks.getTaskName());
-        taskDate.setText(tasks.getDate());
         taskStatus.setText(tasks.getStatus());
-
         return convertView;
     }
 }

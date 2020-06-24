@@ -2,10 +2,8 @@ package com.example.project2019.Controller;
 
 import android.content.Context;
 import android.content.Intent;
-import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -18,14 +16,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.project2019.CompletedTasks;
+import com.example.project2019.Views.CompletedTasks;
 import com.example.project2019.MainActivity;
 import com.example.project2019.Model.EmailNotification;
 import com.example.project2019.Model.RequestHelper;
 import com.example.project2019.Model.Task;
 import com.example.project2019.Model.VolleyCrud;
 import com.example.project2019.Model.taskAdapter;
-import com.example.project2019.Modification;
+import com.example.project2019.Views.UpdateTask;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -70,7 +68,7 @@ public class Controller implements VolleyCrud {
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(context, "You've added '" + task.getTaskName() + "' to your list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "You have added task: '" + task.getTaskName() + "' to your list", Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -98,7 +96,7 @@ public class Controller implements VolleyCrud {
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(context, "You've updated '" + task.getTaskName() + "'", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "You have updated task: '" + task.getTaskName() + "'", Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -130,14 +128,17 @@ public class Controller implements VolleyCrud {
             public void onResponse(JSONArray response) {
                 theList = new ArrayList<>();
                 completedList = new ArrayList<>();
+
                 try {
                     for (int i = 0; i < response.length(); i++) {
                         Task task = new Task();
                         JSONObject jsonObject = response.getJSONObject(i);
+
                         task.setId(jsonObject.getString("ID"));
                         task.setTaskName(jsonObject.getString("TASKNAME"));
                         task.setTaskInfo(jsonObject.getString("TASKINFO"));
                         task.setDate(jsonObject.getString("DATE"));
+
                         if (jsonObject.getString("COMPLETED").equalsIgnoreCase("1")) {
                             task.setStatus("Completed");
                         } else {
@@ -191,7 +192,7 @@ public class Controller implements VolleyCrud {
                 Task task = finalList.get(position);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("TASK", task);
-                Intent intent = new Intent(context, Modification.class);
+                Intent intent = new Intent(context, UpdateTask.class);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             }
@@ -205,7 +206,7 @@ public class Controller implements VolleyCrud {
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(context, "You've removed '" + task.getTaskName() + "' from your list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "You have deleted task: '" + task.getTaskName() + "' from your list", Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -233,9 +234,9 @@ public class Controller implements VolleyCrud {
             @Override
             public void onResponse(String response) {
                 if (task.getStatus().equalsIgnoreCase("Completed")) {
-                    Toast.makeText(context, "Task '" + task.getTaskName() + "' has been completed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Task: '" + task.getTaskName() + "' has been completed", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(context, "Task '" + task.getTaskName() + "' is back to your main list", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Task: '" + task.getTaskName() + "' is back to your list", Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
@@ -269,9 +270,9 @@ public class Controller implements VolleyCrud {
             @Override
             public void onResponse(String response) {
                 if (completedList.size() != 0) {
-                    Toast.makeText(context, "Completed tasks cleared", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Completed task(s) are cleared", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(context, "your list is already empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Your list is already empty", Toast.LENGTH_SHORT).show();
                 }
             }
         }, new Response.ErrorListener() {
@@ -280,9 +281,8 @@ public class Controller implements VolleyCrud {
 
             }
         });
-        String message = "Dear Mr supervisors, \n\n You've cleared your completed list";
+        String message = "Hi, Lucas!, \n\n Your completed task(sk has been cleared";
         emailNotification.notifyViaEmail("luchkiin@gmail.com", Controller.class.getName(), message);
         myQueue.add(request);
     }
-
 }

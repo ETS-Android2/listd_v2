@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.project2019">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,16 +15,31 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
-        <activity android:name=".About"></activity>
-        <activity android:name=".Settings" />
-        <activity android:name=".CompletedTasks" />
-        <activity android:name=".Modification" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Views.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Views.About"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Views.Settings"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Views.CompletedTasks"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Views.UpdateTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Views.AddTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

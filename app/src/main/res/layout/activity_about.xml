@@ -1,84 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".About">
+    android:orientation="vertical"
+    android:weightSum="10.0"
+    tools:context=".Views.About">
 
-    <Button
-        android:id="@+id/cancelBtn"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="40dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="39dp"
-        android:drawableStart="@drawable/ic_cancel_icon"
-        android:drawableLeft="@drawable/ic_cancel_icon"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/idTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:drawableEnd="@drawable/ic_about_icon"
-        android:drawableRight="@drawable/ic_about_icon"
-        android:drawablePadding="10dp"
-        android:text="@string/about_h1"
-        android:textColor="@color/colorBlack"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:drawableEnd="@drawable/ic_menu_kebab_white_black"
-        android:drawableRight="@drawable/ic_menu_kebab_white_black"
-        android:onClick="showPopup"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginEnd="8dp"
-        android:src="@drawable/ic_menu_kebab_white_black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|end"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_color_selector"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/cancelBtn"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:padding="5dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:drawableStart="@drawable/ic_chevron_left"
+            android:minWidth="0dp"
+            android:minHeight="0dp" />
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="8dp"
+            android:padding="5dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:drawableEnd="@drawable/ic_menu_kebab_white"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:onClick="showPopup"
+            android:src="@drawable/ic_menu_kebab_white" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="1.0"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/about_h1"
+            android:textColor="@color/colorWhite"
+            android:textSize="46sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="8.0"
+        android:background="@drawable/border_task_container"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/about_label"
+        android:layout_width="match_parent"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="5dp"
         android:gravity="start"
-        android:text="@string/about_text"
+        android:text="@string/about_text_label"
         android:textColor="@color/colorBlack"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idTxt" />
+        android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/about_paragraph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:lineHeight="22dp"
+            android:justificationMode="inter_word"
+            android:gravity="start"
+            android:text="@string/about_paragraph"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/about_label_2"
+            android:layout_width="match_parent"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="start"
+            android:text="@string/about_text_label_2"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/about_paragraph_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:justificationMode="inter_word"
+            android:lineHeight="22dp"
+            android:gravity="start"
+            android:text="@string/about_paragraph_2"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/about_label_3"
+            android:layout_width="match_parent"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="start"
+            android:text="@string/about_text_label_3"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/about_paragraph_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:justificationMode="inter_word"
+            android:lineHeight="22dp"
+            android:gravity="start"
+            android:text="@string/about_paragraph_3"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
 
     <TextView
         android:id="@+id/txtCopyright"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:gravity="end"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:text="@string/copyright"
         android:textAlignment="textEnd"
-        android:textColor="@color/colorDarkGrey"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="@color/colorDarkGrey" />
+</LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

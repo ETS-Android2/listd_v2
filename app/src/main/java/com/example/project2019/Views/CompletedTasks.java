@@ -1,29 +1,40 @@
-package com.example.project2019;
+package com.example.project2019.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.project2019.Controller.Controller;
+import com.example.project2019.MainActivity;
+import com.example.project2019.R;
+
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
-public class About extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
-
-    private Button cancelBtn;
+public class CompletedTasks extends AppCompatActivity implements android.view.View.OnClickListener, PopupMenu.OnMenuItemClickListener {
+    private Controller controller;
+    private ListView theListView;
+    private Button deleteCompletedBtn, cancelBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
-        cancelBtn = findViewById(R.id.cancelBtn);
+        setContentView(R.layout.activity_completed_tasks);
 
-        cancelBtn.setOnClickListener(view -> finish());
+        theListView = findViewById(R.id.completedList);
+        deleteCompletedBtn = findViewById(R.id.deleteCompletedBtn);
+        cancelBtn = findViewById(R.id.cancelBtn);
+        controller = new Controller(this, theListView);
+        controller.getData();
+        deleteCompletedBtn.setOnClickListener(this);
+        cancelBtn.setOnClickListener(v -> finish());
     }
 
     public void showPopup(View v) {
@@ -44,25 +55,43 @@ public class About extends AppCompatActivity implements PopupMenu.OnMenuItemClic
     public boolean onMenuItemClick(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.menu_item_0:
-                Intent intent = new Intent(About.this, MainActivity.class);
+                Intent intent = new Intent(CompletedTasks.this, MainActivity.class);
                 Toast.makeText(this, "Home clicked", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
                 return true;
             case R.id.menu_item_1:
-                Intent intent1 = new Intent(About.this, CompletedTasks.class);
                 Toast.makeText(this, "Completed tasks clicked", Toast.LENGTH_SHORT).show();
-                startActivity(intent1);
                 return true;
             case R.id.menu_item_2:
-                Intent intent2 = new Intent(About.this, Settings.class);
+                Intent intent2 = new Intent(CompletedTasks.this, Settings.class);
                 Toast.makeText(this, "Settings clicked", Toast.LENGTH_SHORT).show();
                 startActivity(intent2);
                 return true;
             case R.id.menu_item_3:
+                Intent intent3 = new Intent(CompletedTasks.this, About.class);
                 Toast.makeText(this, "About clicked", Toast.LENGTH_SHORT).show();
+                startActivity(intent3);
                 return true;
             default:
                 return false;
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.deleteCompletedBtn:
+                controller.removeCompletedTasks();
+                onResume();
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        controller.getData();
     }
 }

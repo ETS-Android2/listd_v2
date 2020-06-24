@@ -13,7 +13,7 @@ import javax.mail.internet.MimeMessage;
 public class EmailNotification {
 
     public void notifyViaEmail(String recipients, String subject,String textMessage) {
-        final String user = "seddiqinajem@gmail.com";
+        final String user = "luchkiin@gmail.com";
         final String pass = "pdlq kzeu kbxn ftuy";
 
         Properties props = new Properties();
@@ -31,7 +31,7 @@ public class EmailNotification {
 
         try {
             javax.mail.Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("seddiqinajem@gmail.com"));
+            message.setFrom(new InternetAddress("luchkiin@gmail.com"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipients));
             message.setSubject(subject);
             message.setText(textMessage);
