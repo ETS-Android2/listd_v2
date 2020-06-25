@@ -16,6 +16,7 @@ Listd is a free Android application that serves as a to-do list that let's you s
 
 ## Built With
 * Java
+* XML
 * Android Studio
 * Volley Android (HTTP library)
 
