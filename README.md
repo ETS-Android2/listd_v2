@@ -19,3 +19,4 @@ Listd was created as a school project, in which I worked together with my brilli
 ## Contact
 * <a href="mailto:lr@lucasrosendahl.com">lr@lucasrosendahl.com</a>
 * <a href="https://lucasrosendahl.com" target="_blank">Portfolio</a>
+<br />
